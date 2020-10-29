@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+
+<body>
+<div>
+<form>
+<label>Id:</label>
+<input type="text" id="slno"/><br>
+<label>Country:</label>
+<input type="text"  id="country"/><br>
+<label>Capital:</label>
+<input type="text" id="capital"/><br>
+
+
+<button type="button" onclick="loadDoc()">Insert</button>
+
+</form>
+
+<p id="demo"></p>
+
+
+
+
+<script>
+
+
+function loadDoc(){
+var suffix=document.getElementById("slno").value;
+var object = {};
+object["name"] = document.getElementById("country").value;
+object["capital"] = document.getElementById("capital").value;
+var datapass = JSON.stringify(object);
+//document.getElementById("demo").innerHTML = datapass;
+
+
+var xhr = new XMLHttpRequest();
+var url='http://127.0.0.1:8000/api/countries/';
+url+=suffix;
+
+
+xhr.open('POST',url);
+xhr.responseType = 'json';
+xhr.onload = function(e) {
+ if (this.status == 200) {
+   console.log('response', this.response); // JSON response
+   var obj=this.response;  
+   document.getElementById("demo").innerHTML = JSON.stringify(obj)+"  Successfully updated";
+    
+    
+}
+};
+xhr.send(datapass);
+
+
+}
+</script>
+
+</body>
+</html>
