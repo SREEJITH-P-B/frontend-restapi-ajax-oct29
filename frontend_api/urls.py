@@ -24,6 +24,7 @@ urlpatterns = [
     path('delete/',views.delete,name="delete"),
     path('insert/',views.insert,name="insert"),
     path('update/',views.update,name="update"),
+    path('functions/',views.restfn,name="restfn"),
     
     
 	

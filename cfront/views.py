@@ -9,6 +9,8 @@ def insert(request):
 	return render(request,'cfront/insert.html')
 def update(request):
 	return render(request,'cfront/update.html')
+def restfn(request):
+	return render(request,'cfront/functions.html')
 
 
 
